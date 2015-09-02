@@ -1,27 +1,88 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <title>Twittler</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
   </head>
   <body>
     <script>
 
       $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
+
+          var index = streams.home.length - 1;
+          while(index >= 0){
+            var tweet = streams.home[index];
+            var $tweet = $('<li class="list-group-item"></li>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            $tweet.appendTo(".list-group");
+            index -= 1;
+          }
+          $(".list-group li").append('<span class="badge">1s</span>');
 
       });
 
     </script>
+
+    <div class='container'>
+      <div class='navbar-default navbar-fixed-top'>
+        <h1>Pseudo Nav</h1>
+      </div>
+      <div class='row'>
+        <div class='col-md-3'>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><br><br></h3>
+            </div>
+                <div class="img-container">
+                  <img src="https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xtp1/v/t1.0-9/10405379_10202171590925184_5125092492375050891_n.jpg?oh=689d7a8f2fa769ae6c448f886dca7685&oe=567B1EAA" alt="...">
+                </div>
+
+              <div class="panel-body">
+                <br>
+                <br>Hello there, this is my face.
+                <br>It stares longingly into your soul.
+              </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title smallcaps">stuff that may be relevant</h3>
+            </div>
+              <div class="panel-body">
+                Hello There
+              </div>
+            </div>
+          </div>
+
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center"><a href="#">See More...</a></h3>
+            </div>
+              <ul class="list-group">
+              </ul>
+          </div>
+        </div>
+
+        <div class='col-md-3'>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title smallcaps">peeps to stalk</h3>
+            </div>
+              <div class="panel-body">
+                Hello There
+              </div>
+          </div>
+          <div class="panel panel-default panel-heading small">Twittler for Hack Reactor <br> © 2015 Cheyenne Kellis</div>
+        </div>
+
+    </div>
   </body>
 </html>

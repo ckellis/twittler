@@ -1,0 +1,46 @@
+body {
+  background-color: #F9F9FF;
+  padding-top: 7em;
+}
+
+.badge {
+  float: right;
+  background-color: #B8B8E6;
+}
+
+.tweetBox {
+  background-color: #FFFFFF;
+  padding: 0;
+}
+
+.smallcaps {
+  font-variant: small-caps;
+  font-size: 18px;
+}
+
+.panel-default {
+  border-color: #CCCCFF;
+}
+
+.img-container {
+  height: 75px;
+  width: 75px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: -2.5em auto;
+  border: .3em solid #FFFFFF;
+}
+
+.img-container img {
+  width: 75px;
+  height: auto;
+}
+
+.img-circle {
+  overflow: hidden;
+}
+
+.panel-default .panel-heading {
+  background-color: #F0F0FF;
+  border-color: #CCCCFF;
+}
