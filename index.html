@@ -13,6 +13,9 @@
   </head>
   <body>
     <script>
+    var visitor = 'iamthegreatest';
+    streams.users[visitor] = [];
+
       $(document).ready(function(){
         $('.homeFeed').hide();
         var currentUser;
@@ -55,7 +58,14 @@
           feedUpdate('home');
           $('.homeFeed').hide();
         });
-      });
+
+        $('#subTweet').on('click',function () {
+          var yourTweet = $('.content').val();
+          writeTweet(yourTweet);
+          $('.content').val('');
+          feedUpdate('home');
+        });
+      })
     </script>
 
     <div class='container' id="top">
@@ -68,7 +78,7 @@
               <div class="form-group">
                 <input type="text" class="form-control content" placeholder="Say something!">
               </div>
-              <button type="submit" class="btn btn-warning subTweet">Tweet</button>
+              <button type="submit" class="btn btn-warning" id="subTweet">Tweet</button>
             </form>
 
         </div>
