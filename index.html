@@ -15,23 +15,45 @@
     <script>
       $(document).ready(function(){
         $('.homeFeed').hide();
+        var currentUser;
 
-        var feedUpdate = function(){
+        var feedUpdate = function(feed){
+          if(feed == 'home'){
+            $tweet = streams.home;
+          } else {
+            $tweet = streams.users[currentUser];
+            $('.currentUser').text(currentUser + "'s tweets");
+          }
           $('.main').html('');
-          var tweets = streams.home;
-          for(var i = tweets.length - 1; i >= 0; i--){
+          var i = $tweet.length - 1;
+          while(i >= 0){
             $('.main').append('<li class="list-group-item">' + '@' +
-            '<a href="#" class="userName userLink">' + tweets[i].user + '</a>' + '<span class="badge">' +
-            jQuery.timeago(tweets[i].created_at) + '</span>' + '<br>' +
-            tweets[i].message + '</li>');
-            console.log(tweets[i].user);
+            '<a href="#" class="userName userLink">' + $tweet[i].user + '</a>' + '<span class="badge">' +
+            jQuery.timeago($tweet[i].created_at) + '</span>' + '<br>' +
+            $tweet[i].message + '</li>');
+            i--;
           }
         };
 
-        feedUpdate();
+        feedUpdate('home');
 
         $('.seeMore').on('click',function(){
-          feedUpdate();
+          feedUpdate('home');
+          if(currentUser != undefined){
+            feedUpdate(currentUser);
+          }
+        });
+
+        $('.main, .links').on('click', '.userLink', function(){
+          currentUser = $(this).text();
+          feedUpdate(currentUser);
+          $('.homeFeed').show();
+        });
+
+        $('.homeFeed').on('click',function(){
+          $('.currentUser').text('all tweets');
+          feedUpdate('home');
+          $('.homeFeed').hide();
         });
       });
     </script>
@@ -74,7 +96,7 @@
               <h3 class="panel-title smallcaps">stuff that may be relevant</h3>
             </div>
               <div class="panel-body">
-                Hello There
+                hint: not the kardashians
               </div>
             </div>
           </div>
@@ -95,7 +117,7 @@
             <div class="panel-heading">
               <h3 class="panel-title smallcaps">peeps to stalk</h3>
             </div>
-                <ul class="list-group">
+                <ul class="list-group links">
                   <li class="list-group-item">@<a href="#" class="userLink">shawndrost</a></li>
                   <li class="list-group-item">@<a href="#" class="userLink">sharksforcheap</a></li>
                   <li class="list-group-item">@<a href="#" class="userLink">mracus</a></li>
