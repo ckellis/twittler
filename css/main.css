@@ -1,11 +1,12 @@
 body {
-  background-color: #F9F9FF;
-  padding-top: 7em;
+  background-color: #FFFFF5;
+  padding-top: 1em;
 }
 
 .badge {
   float: right;
-  background-color: #B8B8E6;
+  background-color: #f0ad4e;
+  font-size: 11px;
 }
 
 .tweetBox {
@@ -32,15 +33,33 @@ body {
 }
 
 .img-container img {
-  width: 75px;
+  width: 70px;
   height: auto;
-}
-
-.img-circle {
-  overflow: hidden;
+  padding-right: 1px;
 }
 
 .panel-default .panel-heading {
   background-color: #F0F0FF;
   border-color: #CCCCFF;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: bold;
+  color: #f0ad4e;
+}
+
+.navbar-brand {
+  color:#f0ad4e;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+a {
+  color:#777;
+}
+
+a:hover {
+  color:#333;
+  text-decoration: none;
 }

@@ -12,46 +12,63 @@
   </head>
   <body>
     <script>
-
       $(document).ready(function(){
+        $('.homeFeed').hide();
 
-
-          var index = streams.home.length - 1;
-          while(index >= 0){
-            var tweet = streams.home[index];
-            var $tweet = $('<li class="list-group-item"></li>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message);
-            $tweet.appendTo(".list-group");
-            index -= 1;
+        var feedUpdate = function(){
+          $('.main').html('');
+          var tweets = streams.home;
+          for(var i = tweets.length - 1; i >= 0; i--){
+            $('.main').append('<li class="list-group-item">' + '@' +
+            '<a href="#" class="userName userLink">' + tweets[i].user + '</a>' + '<span class="badge">' +
+            tweets[i].created_at + '</span>' + '<br>' +
+            tweets[i].message + '</li>');
+            console.log(tweets[i].user);
           }
-          $(".list-group li").append('<span class="badge">1s</span>');
+        };
 
+        feedUpdate();
+
+        $('.seeMore').on('click',function(){
+          feedUpdate();
+        });
       });
-
     </script>
 
-    <div class='container'>
-      <div class='navbar-default navbar-fixed-top'>
-        <h1>Pseudo Nav</h1>
-      </div>
+    <div class='container' id="top">
+      <nav class="navbar navbar-static-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <span class="navbar-brand" href="#">Twittler</span>
+          </div>
+            <form class="navbar-form text-center" role="submit">
+              <div class="form-group">
+                <input type="text" class="form-control content" placeholder="Say something!">
+              </div>
+              <button type="submit" class="btn btn-warning subTweet">Tweet</button>
+            </form>
+
+        </div>
+      </nav>
+
+
       <div class='row'>
         <div class='col-md-3'>
-          <div class="panel panel-default">
+          <div class="panel panel-warning">
             <div class="panel-heading">
               <h3 class="panel-title"><br><br></h3>
             </div>
                 <div class="img-container">
-                  <img src="https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xtp1/v/t1.0-9/10405379_10202171590925184_5125092492375050891_n.jpg?oh=689d7a8f2fa769ae6c448f886dca7685&oe=567B1EAA" alt="...">
+                  <img src="https://i4.static-shopcade.com/270x270x2135/54e1e8a94698ff92058b5735posqeq/aHR0cDovL3NjLWRlc2lnbmFzc2V0cy1icmllZmluZ3MuczMuYW1hem9uYXdzLmNvbS8yMDE0JTJGMDYlMkYwMyUyRndlYi1taXNzaWxlLWVtb2ppZnVuLmdpZg%3D%3D/emoji-style" alt="...">
                 </div>
 
               <div class="panel-body">
-                <br>
-                <br>Hello there, this is my face.
-                <br>It stares longingly into your soul.
+                <br><b>now viewing:</b>
+                <br><span class="currentUser">all tweets</span>
               </div>
           </div>
 
-          <div class="panel panel-default">
+          <div class="panel panel-warning">
             <div class="panel-heading">
               <h3 class="panel-title smallcaps">stuff that may be relevant</h3>
             </div>
@@ -61,28 +78,38 @@
             </div>
           </div>
 
-        <div class="col-md-6">
-          <div class="panel panel-default">
+        <div class="col-md-7">
+          <div class="panel panel-warning">
             <div class="panel-heading">
-              <h3 class="panel-title text-center"><a href="#">See More...</a></h3>
+              <h3 class="panel-title text-center smallcaps refresh"><a href="#" class="seeMore">see more</a>
+                <a href="#" class="smallcaps homeFeed">  //  home</a></h3>
             </div>
-              <ul class="list-group">
+              <ul class="list-group main">
               </ul>
           </div>
         </div>
 
-        <div class='col-md-3'>
-          <div class="panel panel-default">
+        <div class='col-md-2'>
+          <div class="panel panel-warning">
             <div class="panel-heading">
               <h3 class="panel-title smallcaps">peeps to stalk</h3>
             </div>
-              <div class="panel-body">
-                Hello There
-              </div>
+                <ul class="list-group">
+                  <li class="list-group-item">@<a href="#" class="userLink">shawndrost</a></li>
+                  <li class="list-group-item">@<a href="#" class="userLink">sharksforcheap</a></li>
+                  <li class="list-group-item">@<a href="#" class="userLink">mracus</a></li>
+                  <li class="list-group-item">@<a href="#" class="userLink">douglascalhoun</a></li>
+                </ul>
           </div>
-          <div class="panel panel-default panel-heading small">Twittler for Hack Reactor <br> © 2015 Cheyenne Kellis</div>
+          <div class="panel panel-warning panel-heading small text-muted">Twittler for Hack Reactor <br>2015 Cheyenne Kellis</div>
         </div>
 
     </div>
+
+    <footer class="footer">
+      <div class="container-fluid">
+        <p class="text-muted text-center"><a href="#top">top</a></p>
+      </div>
+    </footer>
   </body>
 </html>
