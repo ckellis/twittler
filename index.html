@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <script src="jquery.timeago.js"></script>
     <title>Twittler</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
@@ -21,7 +22,7 @@
           for(var i = tweets.length - 1; i >= 0; i--){
             $('.main').append('<li class="list-group-item">' + '@' +
             '<a href="#" class="userName userLink">' + tweets[i].user + '</a>' + '<span class="badge">' +
-            tweets[i].created_at + '</span>' + '<br>' +
+            jQuery.timeago(tweets[i].created_at) + '</span>' + '<br>' +
             tweets[i].message + '</li>');
             console.log(tweets[i].user);
           }
